@@ -7,8 +7,8 @@
 ### Clone the repository
 
 ```shell
-git clone git@github.com:juliendargelos/project.git
-cd project
+git clone https://github.com/Somefellow/DiscordDotaMatchAnnouncer.git
+cd DiscordDotaMatchAnnouncer
 ```
 
 ### Check your Ruby version
