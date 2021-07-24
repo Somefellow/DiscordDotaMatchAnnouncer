@@ -84,7 +84,3 @@ Monitor the logs for the following:
 ```shell
 x-rate-limit-remaining-month: 50000
 ```
-
-### Localisation
-
-TODO
