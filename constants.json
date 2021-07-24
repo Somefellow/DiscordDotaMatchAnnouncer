@@ -23,7 +23,8 @@
         "All Random Death Match",
         "1v1 Mid",
         "All Draft",
-        "Turbo"
+        "Turbo",
+        "Mutation"
     ],
     "lobby_type": [
         "Normal",
