@@ -1,5 +1,4 @@
 require "./app/constants.rb"
-require "./app/env.rb"
 require "./app/log.rb"
 require "./app/opendota.rb"
 require "./app/steamapi.rb"
