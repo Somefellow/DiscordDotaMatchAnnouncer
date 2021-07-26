@@ -72,7 +72,6 @@ end
 
 $match_parse_queue.get_match_ids.each do |match_id|
   match_data = $match_parse_queue.get_match_data(match_id)
-  puts "match_id: #{match_id} | match_data: #{match_data}"
   if match_data.count == 1
     text = [
       match_data[0][:display_name],
