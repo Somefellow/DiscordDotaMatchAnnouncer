@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "json"
 
 class Storage
@@ -6,10 +8,10 @@ class Storage
   end
 
   def generate_file
-    if not File.exists?(@storage_file)
-      data_hash = { "config" => { "webhook_url" => "", "steam_api_key" => "", "log_dir" => "./logs" }, "data" => {} }
-      File.write(@storage_file, JSON.pretty_generate(data_hash))
-    end
+    return if File.exist?(@storage_file)
+
+    data_hash = { "config" => { "webhook_url" => "", "steam_api_key" => "", "log_dir" => "./logs" }, "data" => {} }
+    File.write(@storage_file, JSON.pretty_generate(data_hash))
   end
 
   def track_player(player_id, match_id, steam_id)

@@ -1,6 +1,8 @@
-require "./app/opendota.rb"
-require "./app/steamapi.rb"
-require "./app/storage.rb"
+# frozen_string_literal: true
+
+require "./app/opendota"
+require "./app/steamapi"
+require "./app/storage"
 
 $storage = Storage.new("data.json")
 
