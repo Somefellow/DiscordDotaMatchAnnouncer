@@ -59,3 +59,4 @@ Gemfile.lock
 data.json
 logs/
 .solargraph.yml
+cron.log
