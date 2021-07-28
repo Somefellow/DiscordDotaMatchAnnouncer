@@ -11,10 +11,10 @@ class MatchParseQueue
   end
 
   def get_match_ids
-    return @matches.keys
+    @matches.keys
   end
 
   def get_match_data(match_id)
-    return @matches[match_id]
+    @matches[match_id]
   end
 end

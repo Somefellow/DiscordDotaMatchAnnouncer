@@ -12,8 +12,6 @@ class Log
     now = DateTime.now
     date_string = now.strftime("%Y_%m_%d")
     datetime_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    open(File.join(@log_dir, "#{date_string}.log"), "a") do |f|
-      f.puts("#{datetime_string} - #{message}")
-    end
+    File.write(File.join(@log_dir, "#{date_string}.log"), "#{datetime_string} - #{message}\n", mode: "a")
   end
 end

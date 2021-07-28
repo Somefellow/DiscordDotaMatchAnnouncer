@@ -3,17 +3,11 @@ Style/StringLiterals:
 
 Style/Documentation:
   Enabled: false
-
-Style/RedundantReturn:
-  Enabled: false
-
+  
 Style/StringLiteralsInInterpolation:
   Enabled: false
 
 Style/GlobalVars:
-  Enabled: false
-
-Style/MultilineTernaryOperator:
   Enabled: false
 
 Style/TrailingCommaInArrayLiteral:
@@ -35,7 +29,4 @@ Metrics/MethodLength:
   Enabled: false
 
 Metrics/BlockLength:
-  Enabled: false
-
-Layout/MultilineOperationIndentation:
   Enabled: false

@@ -24,31 +24,36 @@ class Storage
   def get_webhook_url
     file = File.read(@storage_file)
     data_hash = JSON.parse(file)
-    return data_hash["config"]["webhook_url"]
+
+    data_hash["config"]["webhook_url"]
   end
 
   def get_steam_api_key
     file = File.read(@storage_file)
     data_hash = JSON.parse(file)
-    return data_hash["config"]["steam_api_key"]
+
+    data_hash["config"]["steam_api_key"]
   end
 
   def get_log_dir
     file = File.read(@storage_file)
     data_hash = JSON.parse(file)
-    return data_hash["config"]["log_dir"]
+
+    data_hash["config"]["log_dir"]
   end
 
   def get_player_list
     file = File.read(@storage_file)
     data_hash = JSON.parse(file)
-    return data_hash["data"].keys
+
+    data_hash["data"].keys
   end
 
   def get_match_id(player_id)
     file = File.read(@storage_file)
     data_hash = JSON.parse(file)
-    return data_hash["data"][player_id]["match_id"]
+
+    data_hash["data"][player_id]["match_id"]
   end
 
   def set_match_id(player_id, match_id)
@@ -61,7 +66,8 @@ class Storage
   def get_display_name(player_id)
     file = File.read(@storage_file)
     data_hash = JSON.parse(file)
-    return data_hash["data"][player_id]["display_name"]
+
+    data_hash["data"][player_id]["display_name"]
   end
 
   def set_display_name(player_id, display_name)
@@ -74,7 +80,8 @@ class Storage
   def get_steam_id(player_id)
     file = File.read(@storage_file)
     data_hash = JSON.parse(file)
-    return data_hash["data"][player_id]["steam_id"]
+
+    data_hash["data"][player_id]["steam_id"]
   end
 
   def set_steam_id(player_id, steam_id)

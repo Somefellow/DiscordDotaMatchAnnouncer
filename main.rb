@@ -18,17 +18,21 @@ $steam_api = SteamAPI.new($storage.get_steam_api_key)
 $webhook = WebHook.new($storage.get_webhook_url)
 
 def parse_match_data(player_id, display_name, match_data)
-  return { :id => match_data["match_id"],
-           :player_id => player_id,
-           :display_name => display_name,
-           :hero => $opendota.get_hero_name(match_data["hero_id"]),
-           :lobby_type => $constants.get_lobby_type(match_data["lobby_type"]),
-           :game_mode => $constants.get_game_mode(match_data["game_mode"]),
-           :win => (match_data["player_slot"] < 128 && match_data["radiant_win"]) ||
-                   (match_data["player_slot"] >= 128 && !match_data["radiant_win"]) ? "**Win**" : "Loss",
-           :duration => format("%02<minutes>d:%02<seconds>d",
-                               { :minutes => match_data["duration"] / 60, :seconds => match_data["duration"] % 60 }),
-           :kda => "#{match_data["kills"]}/#{match_data["deaths"]}/#{match_data["assists"]}" }
+  { :id => match_data["match_id"],
+    :player_id => player_id,
+    :display_name => display_name,
+    :hero => $opendota.get_hero_name(match_data["hero_id"]),
+    :lobby_type => $constants.get_lobby_type(match_data["lobby_type"]),
+    :game_mode => $constants.get_game_mode(match_data["game_mode"]),
+    :win => if (match_data["player_slot"] < 128 && match_data["radiant_win"]) ||
+               (match_data["player_slot"] >= 128 && !match_data["radiant_win"])
+              "**Win**"
+            else
+              "Loss"
+            end,
+    :duration => format("%02<minutes>d:%02<seconds>d",
+                        { :minutes => match_data["duration"] / 60, :seconds => match_data["duration"] % 60 }),
+    :kda => "#{match_data["kills"]}/#{match_data["deaths"]}/#{match_data["assists"]}" }
 end
 
 # Start Main
@@ -40,7 +44,7 @@ player_list.select! do |player_id|
   matched_player_summary = player_summaries.detect { |player_summary| player_summary["steamid"] == steam_id }
   # personastate 0 == Offline, 4 == Snooze.
   next (matched_player_summary["personastate"] != 0 && matched_player_summary["personastate"] != 4) ||
-         (DateTime.now.to_time.utc.to_i - matched_player_summary["lastlogoff"] < (0.5 * 60 * 60))
+    (DateTime.now.to_time.utc.to_i - matched_player_summary["lastlogoff"] < (0.5 * 60 * 60))
 end
 
 $log.log("Match checking #{player_list.count} players: #{player_list.join(", ")}")

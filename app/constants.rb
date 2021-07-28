@@ -10,12 +10,14 @@ class Constants
   def get_game_mode(game_mode_id)
     file = File.read(@constant_file)
     data_hash = JSON.parse(file)
-    return data_hash["game_mode"][game_mode_id]
+
+    data_hash["game_mode"][game_mode_id]
   end
 
   def get_lobby_type(lobby_type_id)
     file = File.read(@constant_file)
     data_hash = JSON.parse(file)
-    return data_hash["lobby_type"][lobby_type_id]
+
+    data_hash["lobby_type"][lobby_type_id]
   end
 end
