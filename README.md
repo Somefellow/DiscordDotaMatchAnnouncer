@@ -84,3 +84,8 @@ Monitor the logs for the following:
 ```shell
 x-rate-limit-remaining-month: 50000
 ```
+
+### Updating constants.json
+
+https://github.com/odota/dotaconstants/blob/master/json/game_mode.json
+https://github.com/odota/dotaconstants/blob/master/json/lobby_type.json
