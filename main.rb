@@ -6,6 +6,7 @@ require './app/match_parse_queue'
 require './app/opendota'
 require './app/steamapi'
 require './app/storage'
+require './app/util'
 require './app/webhook'
 
 $constants = Constants.new('constants.json')
@@ -113,4 +114,5 @@ $match_parse_queue.get_match_ids.each do |match_id|
 end
 
 $log.log("x-rate-limit-remaining-month: #{$opendota.get_rate_limit_remaining}") unless player_list.empty?
+$log.log("Expecting around #{50_000 - (Util.month_fraction * 50_000).to_i} remaining") unless player_list.empty?
 $log.log('Match check finished.')
