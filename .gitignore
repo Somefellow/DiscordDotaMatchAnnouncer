@@ -60,3 +60,6 @@ data.json
 logs/
 .solargraph.yml
 cron.log
+.vscode/
+test.rb
+webhooks.txt

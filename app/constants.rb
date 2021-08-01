@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "json"
+require 'json'
 
 class Constants
   def initialize(constant_file)
@@ -11,13 +11,13 @@ class Constants
     file = File.read(@constant_file)
     data_hash = JSON.parse(file)
 
-    data_hash["game_mode"][game_mode_id]
+    data_hash['game_mode'][game_mode_id]
   end
 
   def get_lobby_type(lobby_type_id)
     file = File.read(@constant_file)
     data_hash = JSON.parse(file)
 
-    data_hash["lobby_type"][lobby_type_id]
+    data_hash['lobby_type'][lobby_type_id]
   end
 end

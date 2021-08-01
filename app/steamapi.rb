@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "json"
-require "net/http"
-require "uri"
+require 'json'
+require 'net/http'
+require 'uri'
 
 class SteamAPI
   def initialize(key)
@@ -10,10 +10,10 @@ class SteamAPI
   end
 
   def get_player_summaries(steam_ids)
-    uri = URI("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{@key}&steamids=#{steam_ids.join(",")}")
+    uri = URI("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{@key}&steamids=#{steam_ids.join(',')}")
     res = Net::HTTP.get_response(uri)
     data_hash = JSON.parse(res.body)
 
-    data_hash["response"]["players"]
+    data_hash['response']['players']
   end
 end

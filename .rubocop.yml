@@ -1,10 +1,4 @@
-Style/StringLiterals:
-  Enabled: false
-
 Style/Documentation:
-  Enabled: false
-  
-Style/StringLiteralsInInterpolation:
   Enabled: false
 
 Style/GlobalVars:

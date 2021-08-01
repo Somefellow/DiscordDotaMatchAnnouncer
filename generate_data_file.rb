@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "./app/storage"
+require './app/storage'
 
-$storage = Storage.new("data.json")
+$storage = Storage.new('data.json')
 $storage.generate_file

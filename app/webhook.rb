@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "discordrb/webhooks"
+require 'discordrb/webhooks'
 
 class WebHook
   def initialize(webhook)
