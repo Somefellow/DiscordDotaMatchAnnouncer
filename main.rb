@@ -114,7 +114,7 @@ $match_parse_queue.get_match_ids.each do |match_id|
 end
 
 $log.log("x-rate-limit-remaining-month: #{$opendota.get_rate_limit_remaining}") unless player_list.empty?
-rate_limit_surplus_deficit = 50_000 - (Util.month_fraction * 50_000).to_i - $opendota.get_rate_limit_remaining
+rate_limit_surplus_deficit = $opendota.get_rate_limit_remaining - (50_000 - (Util.month_fraction * 50_000).to_i)
 if rate_limit_surplus_deficit.positive?
   $log.log("You have a surplus of #{rate_limit_surplus_deficit} rate limit this month.")
 elsif rate_limit_surplus_deficit.negative?
