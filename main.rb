@@ -90,20 +90,21 @@ $match_parse_queue.get_match_ids.each do |match_id|
     $log.log("Sending solo match to webhook: #{text}")
     $webhook.send_text(text)
   else
-    title = [
-      match_data[0][:lobby_type],
-      match_data[0][:game_mode],
-      match_data[0][:win],
-      match_data[0][:duration],
-    ].join(' | ')
-    fields = match_data.map do |match|
-      {
-        :name => match[:display_name],
-        :value => [match[:hero], match[:kda]].join(' '),
-      }
-    end
-    $log.log("Sending team match to webhook: title: #{title} | fields: #{fields}")
-    $webhook.send_embed(title, fields)
+    embed_data = {
+      :title => [
+        match_data[0][:lobby_type],
+        match_data[0][:game_mode],
+        match_data[0][:win],
+        match_data[0][:duration],
+      ].join(' | '),
+      :fields => match_data.map do |match|
+        {
+          :name => match[:display_name],
+          :value => [match[:hero], match[:kda]].join(' '),
+        }
+    }
+    $log.log("Sending team match to webhook: #{embed_data}")
+    $webhook.send_embed(embed_data[:title], embed_data[:fields])
   end
   match_data.each do |match|
     if match[:id] > $storage.get_match_id(match[:player_id])
