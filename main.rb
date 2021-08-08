@@ -102,6 +102,7 @@ $match_parse_queue.get_match_ids.each do |match_id|
           :name => match[:display_name],
           :value => [match[:hero], match[:kda]].join(' '),
         }
+      end
     }
     $log.log("Sending team match to webhook: #{embed_data}")
     $webhook.send_embed(embed_data[:title], embed_data[:fields])
