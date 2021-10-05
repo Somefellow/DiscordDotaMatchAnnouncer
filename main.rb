@@ -73,6 +73,13 @@ player_list.each do |player_id|
     $log.log("Parsed match: #{parsed_match_data}")
     $match_parse_queue.add(parsed_match_data)
   end
+rescue StandardError => e
+  $log.log(e.inspect)
+  begin
+    WebHook.new($storage.get_error_webhook_url).send_text("Error match checking #{player_id} | #{$storage.get_display_name(player_id)}: ```#{e.inspect}```")
+  rescue StandardError => e2
+    $log.log(e2.inspect)
+  end
 end
 
 $match_parse_queue.get_match_ids.each do |match_id|

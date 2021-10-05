@@ -27,3 +27,6 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   Enabled: false
+
+Layout/EndOfLine:
+  Enabled: false
