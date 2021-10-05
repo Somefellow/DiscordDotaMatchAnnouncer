@@ -30,3 +30,6 @@ Metrics/BlockLength:
 
 Layout/EndOfLine:
   Enabled: false
+
+Layout/LineLength:
+  Enabled: false
