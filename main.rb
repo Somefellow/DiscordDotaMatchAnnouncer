@@ -75,6 +75,7 @@ player_list.each do |player_id|
   end
 rescue StandardError => e
   $log.log(e.inspect)
+  $log.log(e.backtrace.join("\n"))
   begin
     WebHook.new($storage.get_error_webhook_url).send_text("Error match checking `#{player_id}` | `#{$storage.get_display_name(player_id)}`: ```#{e.inspect}\n#{e.backtrace.join("\n")}```")
   rescue StandardError => e2
