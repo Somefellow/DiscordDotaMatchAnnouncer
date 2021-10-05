@@ -10,7 +10,13 @@ class Storage
   def generate_file
     return if File.exist?(@storage_file)
 
-    data_hash = { 'config' => { 'webhook_url' => '', 'steam_api_key' => '', 'log_dir' => './logs' }, 'data' => {} }
+    data_hash = {
+      'config' => { 'webhook_url' => '',
+                    'error_webhook_url' => '',
+                    'steam_api_key' => '',
+                    'log_dir' => './logs' },
+      'data' => {}
+    }
     File.write(@storage_file, JSON.pretty_generate(data_hash))
   end
 
@@ -26,6 +32,13 @@ class Storage
     data_hash = JSON.parse(file)
 
     data_hash['config']['webhook_url']
+  end
+
+  def get_error_webhook_url
+    file = File.read(@storage_file)
+    data_hash = JSON.parse(file)
+
+    data_hash['config']['error_webhook_url']
   end
 
   def get_steam_api_key
