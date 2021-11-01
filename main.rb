@@ -52,7 +52,7 @@ $log.log("Match checking #{player_list.count} players: #{player_list.join(', ')}
 player_list.each do |player_id|
   $log.log("Match checking #{player_id} | #{$storage.get_display_name(player_id)}")
   new_matches = $opendota.get_recent_matches(player_id).select do |match|
-    match.key?('match_id') && match['match_id'] > $storage.get_match_id(player_id)
+    match['match_id'].nil? && match['match_id'] > $storage.get_match_id(player_id)
   end
 
   if new_matches.empty?
