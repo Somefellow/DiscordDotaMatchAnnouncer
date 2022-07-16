@@ -70,4 +70,12 @@ class OpenDota
 
     JSON.parse(res.body)
   end
+
+  def request_parse(match_id)
+    uri = URI("https://api.opendota.com/api/request/#{match_id}")
+    res = Net::HTTP.get_response(uri)
+    @rate_limit_remaining = [@rate_limit_remaining, res['x-rate-limit-remaining-month'].to_i].min
+
+    JSON.parse(res.body)
+  end
 end

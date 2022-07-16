@@ -103,4 +103,11 @@ class Storage
     data_hash['data'][player_id]['steam_id'] = steam_id
     File.write(@storage_file, JSON.pretty_generate(data_hash))
   end
+
+  def request_opendota_parse?(player_id)
+    file = File.read(@storage_file)
+    data_hash = JSON.parse(file)
+
+    data_hash['data'][player_id]['request_opendota_parse'] == true
+  end
 end
