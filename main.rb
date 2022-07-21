@@ -72,7 +72,7 @@ player_list.each do |player_id|
     parsed_match_data = parse_match_data(player_id, display_name, match_data)
     $log.log("Parsed match: #{parsed_match_data}")
     if $storage.request_opendota_parse?(player_id)
-      request_parse_response = $opendota.request_parse(parsed_match_id[:id])
+      request_parse_response = $opendota.request_parse(parsed_match_data[:id])
       $log.log("Opendota parse response: #{request_parse_response}")
     end
     $match_parse_queue.add(parsed_match_data)
